@@ -1,33 +1,23 @@
-# Deta Space Client
+# Deta Bare Client
 
-An fetch function for deta space
+API Wrapper for Deta Space, implementing the [TompHTTP specifications](https://github.com/tomphttp)
 
 ## Usage
 
 See the [Authentication Doc](https://deta.space/docs/en/basics/cli/#authentication) for more information on how to get your access token.
 
 ```js
-import { fetchFn } from "deta-space-client";
+const { fetchFn } = require("../dist/index.js");
 
 // Provide your access token
-const fetchFromSpace = fetchFn(process.env.DETA_SPACE_TOKEN);
+const spaceFetch = fetchFn(process.env.DETA_SPACE_TOKEN);
+spaceFetch("/apps")
+  .then((res) => res.json())
+  .then((payload) => {
+    console.log(payload);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
-fetch("/instances").then((response) => {
-  console.log(response);
-});
-```
-
-## CLI
-
-```txt
-space-client <command>
-
-Commands:
-  index.js get <endpoint>   Do a GET request
-  index.js post <endpoint>  Do a POST request
-
-Options:
-  --version       Show version number                                  [boolean]
-  --access-token  The space access token                                [string]
-  --help          Show help                                            [boolean]
 ```
