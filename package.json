@@ -1,5 +1,5 @@
 {
-  "name": "deta-bare-client",
+  "name": "deta-space-bare-client",
   "version": "3.0.0",
   "description": "Access the Deta Space API from the browser.",
   "author": {
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Endercass/deta-bare-client"
+    "url": "https://github.com/Endercass/deta-space-bare-client"
   },
   "types": "dist/index.d.ts",
   "files": [
