@@ -1,17 +1,25 @@
 {
-  "name": "deta-space-client",
+  "name": "deta-bare-client",
   "version": "2.2.1",
-  "description": "Access the Deta Space API from Node.js",
+  "description": "Access the Deta Space API from the browser.",
   "author": {
     "name": "Achille Lacoin"
   },
+  "contributors": [
+    {
+      "name": "Endercass",
+      "url": "https://github.com/Endercass"
+    }
+  ],
   "keywords": [
     "deta",
-    "space"
+    "space",
+    "tomphttp",
+    "bare"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pomdtr/deta-space-client"
+    "url": "https://github.com/Endercass/deta-bare-client"
   },
   "types": "dist/index.d.ts",
   "files": [
@@ -20,15 +28,12 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc --build",
-    "cli": "npm run build && node ./dist/cli/index.js"
+    "test": "node test/index.js"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
     "@types/yargs": "^17.0.24",
     "typescript": "^4.9.5"
-  },
-  "bin": {
-    "space-client": "./dist/cli/index.js"
   },
   "dependencies": {
     "cross-fetch": "^4.0.0",
