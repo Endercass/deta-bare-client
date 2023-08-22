@@ -1,8 +1,7 @@
-const { SpaceClient } = require("../dist/index.js");
+const { fetchFn } = require("../dist/index.js");
 
-const client = SpaceClient();
-client
-  .get("/collections")
+const spaceFetch = fetchFn(process.env.DETA_SPACE_TOKEN);
+spaceFetch("/apps")
   .then((res) => res.json())
   .then((payload) => {
     console.log(payload);
