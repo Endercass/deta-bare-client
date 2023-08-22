@@ -1,6 +1,6 @@
 {
   "name": "deta-space-bare-client",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Access the Deta Space API from the browser.",
   "author": {
     "name": "Achille Lacoin"
@@ -21,17 +21,13 @@
     "type": "git",
     "url": "https://github.com/Endercass/deta-space-bare-client"
   },
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "build": "rm -rf dist && webpack --mode production && cp -r node_modules/@tomphttp/bare-client/dist dist/bare-client",
     "build-devel": "rm -rf dist && webpack --mode development && cp -r node_modules/@tomphttp/bare-client/dist dist/bare-client"
-  },
-  "exports": {
-    ".": "./src/index.js"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
