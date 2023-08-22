@@ -36,7 +36,10 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@tomphttp/bare-client": "^2.2.0-alpha",
     "cross-fetch": "^4.0.0",
+    "install": "^0.13.0",
+    "npm": "^9.8.1",
     "yargs": "^17.7.1"
   }
 }
