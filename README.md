@@ -7,17 +7,20 @@ API Wrapper for Deta Space, implementing the [TompHTTP specifications](https://g
 See the [Authentication Doc](https://deta.space/docs/en/basics/cli/#authentication) for more information on how to get your access token.
 
 ```js
-const { fetchFn } = require("../dist/index.js");
-
-// Provide your access token
-const spaceFetch = fetchFn(process.env.DETA_SPACE_TOKEN);
-spaceFetch("/apps")
-  .then((res) => res.json())
-  .then((payload) => {
-    console.log(payload);
-  })
-  .catch((err) => {
-    console.error(err);
+bare
+  .createBareClient(`http://${window.location.host}/bare/`)
+  .then(async (client) => {
+    const spaceFetch = detaBareClient.fetchFn(
+      prompt("Deta Space Token"),
+      client
+    );
+    spaceFetch("/apps")
+      .then((res) => res.json())
+      .then((payload) => {
+        console.log(payload);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   });
-
 ```
