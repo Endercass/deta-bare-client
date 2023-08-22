@@ -1,7 +1,4 @@
-import crypto from "crypto";
-if (!globalThis.fetch) {
-  globalThis.fetch = require("cross-fetch");
-}
+import HmacSHA256 from "crypto-js/hmac-sha256";
 
 class InvalidAccessTokenError extends Error {
   constructor() {
@@ -9,17 +6,17 @@ class InvalidAccessTokenError extends Error {
   }
 }
 
-function signString(keySecret: string, toSign: string) {
-  return crypto.createHmac("sha256", keySecret).update(toSign).digest("hex");
+function signString(keySecret, toSign) {
+  return HmacSHA256(toSign, keySecret);
 }
 
-export function fetchFn(accessToken: string) {
+export function fetchFn(accessToken, client) {
   const [keyId, keySecret] = accessToken.split("_");
   if (!keyId || !keySecret) {
     throw new InvalidAccessTokenError();
   }
 
-  return async (url: string, options?: RequestInit) => {
+  return async (url, options) => {
     if (!url.startsWith("https") && !url.startsWith("http")) {
       if (!url.startsWith("/")) {
         url = `/${url}`;
@@ -44,7 +41,7 @@ export function fetchFn(accessToken: string) {
 
     const signature = signString(keySecret, toSign);
 
-    const res = await fetch(url, {
+    const res = await client.fetch(url, {
       ...options,
       headers: {
         "Content-Type": contentType,
